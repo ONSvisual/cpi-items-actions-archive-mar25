@@ -33,7 +33,7 @@ latestmonth=datetime.strptime(unchained.columns[-1],"%Y-%m-%d")
 # first get the data.json from the cpi items and prices page
 
 with requests.Session() as s:
-    r=s.get("https://corsproxy.io/?https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes/data",headers={'User-Agent': 'Mozilla/5.0'},verify=False)
+    r=s.get("https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes/data",headers={'User-Agent': 'Mozilla/5.0'},verify=False)
     data = r.json()
     datasets = data['datasets']
 
