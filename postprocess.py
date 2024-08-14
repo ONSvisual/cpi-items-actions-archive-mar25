@@ -61,14 +61,14 @@ if(itemmonth!=latestmonth):
     print('month from indices is different to latest month in unchained csv')
     # download the file
     with requests.Session() as s:
-        r=s.get("https://corsproxy.io/?https://www.ons.gov.uk"+items+"/data",headers={'User-Agent': 'Mozilla/5.0'},verify=False)
+        r=s.get("https://www.ons.gov.uk"+items+"/data",headers={'User-Agent': 'Mozilla/5.0'},verify=False)
         itemspage = r.json()
         csv = itemspage['downloads'][0]['file']
     
     # get the csv of the latest indices
 
     with requests.Session() as s:
-        download = s.get("https://corsproxy.io/?https://www.ons.gov.uk/file?uri="+items+"/"+csv,headers={'User-Agent': 'Mozilla/5.0'},verify=False)
+        download = s.get("https://www.ons.gov.uk/file?uri="+items+"/"+csv,headers={'User-Agent': 'Mozilla/5.0'},verify=False)
         df=pd.read_csv(io.StringIO(download.content.decode('utf-8')))
         
     #get the index date which is the first cell
